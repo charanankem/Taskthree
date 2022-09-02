@@ -1,0 +1,29 @@
+<div class="restaurants-index-main-container">
+    <h1 class="main-headings">Restaurants:</h1>
+    <% @food_reviews.each do |fr| %><br/>
+        <div class="d-flex flex-row">
+        <div class="sub-container d-flex flex-row ">
+            <div>
+                <% if fr.profile_picture.attached? %>
+                    <%= image_tag fr.profile_picture,class:"images"%>
+                <% end %>
+            </div>
+            <div class="p-3">
+                <p class="index-listing-head"><span style="color:coral">Restaurant Name: </span> <%= fr.restaurant_name%></p>
+                <p class="index-listing-head"><span style="color:coral">Location: </span> <%= fr.location%></p>
+                <p class="index-listing-head"><span style="color:coral">Category: </span> <%= fr.category%></p>
+            </div>
+        </div><br/>
+        <div class="sub-right-container">
+        <%= link_to "Review", fr,class:"reviewbutton"%>
+        </div>
+        </div>
+    <% end %>
+    <div class="pagination">
+    <%= paginate @food_reviews  %>
+    </div>
+    
+    <%= button_to "Add Restaurant",new_food_review_path,method: :get,class:"btn btn-primary buttons"%>
+</div>
+
+

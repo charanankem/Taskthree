@@ -1,0 +1,27 @@
+<div class="restaurants-index-main-container">
+<h1 class="main-headings">Function halls:</h1>
+    <% @function_hall_reviews.each do |dr| %><br/>
+        <div class="d-flex flex-row">
+        <div class="sub-container d-flex flex-row ">
+            <div>
+                <% if dr.profile_image.attached? %>
+                    <%= image_tag dr.profile_image,class:"images"%>
+                <% end %>
+            </div>
+            <div class="p-3">
+                <p class="index-listing-head"><span style="color:coral">Restaurant Name: </span> <%= dr.function_hall_name%></p>
+                <p class="index-listing-head"><span style="color:coral">Location: </span> <%= dr.location%></p>
+                <p class="index-listing-head"><span style="color:coral">Category: </span> <%= dr.capacity%></p>
+            </div>
+        </div><br/>
+        <div class="sub-right-container">
+        <%= link_to "Review", dr,class:"reviewbutton"%>
+        </div>
+        </div>
+    <% end %>
+    <div class="pagination">
+    <%= paginate @function_hall_reviews  %>
+    </div>
+    
+    <%= button_to "Add Function hall",new_function_hall_review_path,method: :get,class:"btn btn-primary buttons"%>
+</div> 

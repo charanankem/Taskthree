@@ -1,0 +1,36 @@
+
+<%= form_with model: @food_review do |form| %>
+ 
+    <div class="mb-3">
+      <%= form.label :restaurant_name %><br>
+      <%= form.text_field :restaurant_name %><br>
+      <% @food_review.errors.full_messages_for(:restaurant_name).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :location %><br>
+      <%= form.text_area :location %><br>
+      <% @food_review.errors.full_messages_for(:location).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+
+
+    <div class="mb-3">
+    <%= form.label :category %><br />
+    <%= form.select :category, ['Cafe', 'Restaurant','Bar']%>
+    <% @food_review.errors.full_messages_for(:category).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :profile_picture %><br>
+      <%= form.file_field :profile_picture %><br>
+    </div>
+      <div>
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+<% end %>

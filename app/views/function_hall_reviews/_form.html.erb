@@ -1,0 +1,37 @@
+<%= form_with model: @function_hall_review do |form| %>
+ 
+    <div class="mb-3">
+      <%= form.label :function_hall_name %><br>
+      <%= form.text_field :function_hall_name %><br>
+      <% @function_hall_review.errors.full_messages_for(:function_hall_name).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :location %><br>
+      <%= form.text_area :location %><br>
+      <% @function_hall_review.errors.full_messages_for(:location).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+
+
+    <div class="mb-3">
+    <%= form.label :capacity %><br />
+    <%= form.select :capacity, ['100', '200','300','400','500','1000','2000']%><br/>
+    <% @function_hall_review.errors.full_messages_for(:capacity).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+    
+    <div class="mb-3">
+      <%= form.label :profile_image %><br>
+      <%= form.file_field :profile_image %><br>
+    </div>
+
+
+      <div>
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+<% end %>

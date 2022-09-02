@@ -1,0 +1,48 @@
+
+<div class="sign-up-form-container">
+<h2 class="sign-up-heading">Sign up</h2>
+
+<%= form_with model: @user do |form| %>
+
+
+    <div class="mb-3">
+      <%= form.label :user_name %><br>
+      <%= form.text_field :user_name,{ placeholder: "Enter your name" } %><br>
+      <% @user.errors.full_messages_for(:user_name).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+
+
+    <div class="mb-3">
+      <%= form.label :mobile_number %><br>
+      <%= form.text_field :mobile_number,{  placeholder: "Enter your number" } %><br>
+      <% @user.errors.full_messages_for(:mobile_number).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div><br/>
+
+  <div class="actions">
+    <%= form.submit "Sign up",class: "btn btn-dark" %>
+  </div>
+<% end %>
+
+</div>

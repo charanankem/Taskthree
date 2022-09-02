@@ -1,0 +1,30 @@
+<div class="show-main-container"><br/>
+<div class="show-index-container">
+    <div>
+    <% if @function_hall_review.profile_image.attached? %>
+        <%= image_tag @function_hall_review.profile_image,class:"image"%>
+    <% end %>
+    </div>
+    <div class="p-3">
+    <p class="index-listing-head"><span style="color:coral">Restaurant Name: </span> <%= @function_hall_review.function_hall_name%></p>
+    <p class="index-listing-head"><span style="color:coral">Location: </span> <%= @function_hall_review.location%></p>
+    <p class="index-listing-head"><span style="color:coral">Category: </span> <%= @function_hall_review.capacity%></p>
+    </div>
+</div>
+
+<div class="d-flex flex-row">
+<div class="review-container">
+<h2>Reviews:</h2><hr/>
+<% @reviews.each do |r|%>
+    <h4><%= r.user.user_name%></h4>
+    <p class="reviewtext">-><%= r.review_text%></p>
+    <p class="reviewtext"><%= r.suggestion%></p>
+    <hr/>
+<%end%>
+</div>
+<div class="review-form-container">
+<h1>Help us to improve:</h1>
+<%= render "reviews/form"%>
+</div>
+</div>
+</div>

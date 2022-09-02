@@ -1,0 +1,25 @@
+<%= form_for [@reviewable, @review]  do |form| %>
+ 
+    <div class="mb-3">
+      <%= form.label :review_text %><br>
+      <%= form.text_area :review_text %><br>
+      <% @review.errors.full_messages_for(:restaurant_name).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :suggestion %><br>
+      <%= form.text_area :suggestion %><br>
+      <% @review.errors.full_messages_for(:location).each do |message| %>
+        <div class="red"><%= message %></div>
+      <% end %>
+    </div>
+
+    <%= form.hidden_field :user_id, value: current_user.id %>
+
+    
+    <div>
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+<% end %>
