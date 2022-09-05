@@ -12,6 +12,7 @@ class FunctionHallReviewsController < ApplicationController
         @review = Review.new
     end
     
+    #view
     def new
         @function_hall_review = FunctionHallReview.new
     end
